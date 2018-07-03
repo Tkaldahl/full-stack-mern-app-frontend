@@ -6,19 +6,27 @@ import {
 import axios from 'axios'
 
 class Occupant extends Component {
+  constructor () {
+    super()
+    this.state = {
+      occupants: null,
+      age: null,
+      role: null
+    }
+  }
   componentDidMount () {
     let origin
     if (window.location.origin === 'http://localhost:3000') {
       origin = 'http://localhost:3000'
     } else {
-      origin = 'https://full-stack-mern-app-backend.herokuapp.com/'
+      origin = 'https://full-stack-mern-app-backend.herokuapp.com'
     }
-    axios.get(`${origin}/occupants`)
+    axios.get(`${origin}`)
       .then((res) => {
         console.log(res)
-        // this.setState({
-        //   translations: res.data
-        // })
+        this.setState({
+          occupants: res.data
+        })
       })
       .catch((err) => {
         console.log(err)
