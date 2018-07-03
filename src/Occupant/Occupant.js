@@ -19,7 +19,7 @@ class Occupant extends Component {
     if (window.location.origin === 'http://localhost:3000') {
       origin = 'http://localhost:3000'
     } else {
-      origin = 'https://full-stack-mern-app-backend.herokuapp.com'
+      origin = 'https://full-stack-mern-app-backend.herokuapp.com/tay'
     }
     axios.get(`${origin}`)
       .then((res) => {
