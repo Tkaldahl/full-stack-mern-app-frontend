@@ -29,20 +29,22 @@ class App extends Component {
   }
   render () {
     return (
-      <div className='App'>
-        <header className='App-header'>
-          <h1 className='App-title'>Kaldahl House</h1>
-        </header>
-        <nav>
-          <Link to='/occupants'>View Occupants</Link>
-        </nav>
-        <main>
-          <Route
-            path='occupants'
-            component={Occupant}
-          />
-        </main>
-      </div>
+      <Router>
+        <div className='App'>
+          <header className='App-header'>
+            <h1 className='App-title'>Kaldahl House</h1>
+          </header>
+          <nav>
+            <Link to='/occupants'>View Occupants</Link>
+          </nav>
+          <main>
+            <Route
+              path='/occupants'
+              component={Occupant}
+            />
+          </main>
+        </div>
+      </Router>
     )
   }
 }
