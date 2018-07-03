@@ -9,9 +9,9 @@ class Occupant extends Component {
   constructor () {
     super()
     this.state = {
-      occupants: null,
-      age: null,
-      role: null
+      occupants: []
+    //   age: null,
+    //   role: null
     }
   }
   componentDidMount () {
@@ -19,14 +19,15 @@ class Occupant extends Component {
     if (window.location.origin === 'http://localhost:3000') {
       origin = 'http://localhost:3000'
     } else {
-      origin = 'https://full-stack-mern-app-backend.herokuapp.com/tay'
+      origin = 'https://full-stack-mern-app-backend.herokuapp.com/'
     }
     axios.get(`${origin}`)
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         this.setState({
           occupants: res.data
         })
+        console.log(this.state.occupants)
       })
       .catch((err) => {
         console.log(err)
@@ -34,10 +35,23 @@ class Occupant extends Component {
   }
 
   render () {
-    // const translations = this.state.translations.map((translation, index) => {
+    if (this.state.occupants.length > 0) {
+      console.log('rendering updated state')
+      var occupants = this.state.occupants.map((occupant, index) => {
+        return (
+          <div>
+            <h2>{occupant.name}</h2>
+            <h4>Role: {occupant.role}</h4>
+            <h4>Age: {occupant.age}</h4>
+          </div>
+        )
+      })
+    }
+
     return (
       <div>
-          HELLO WORLD
+        <h1>Kaldahl Home Occupants</h1>
+        {occupants}
       </div>
     )
   }

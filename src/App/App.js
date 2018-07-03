@@ -30,20 +30,31 @@ class App extends Component {
   render () {
     return (
       <Router>
-        <div className='App'>
-          <header className='App-header'>
-            <h1 className='App-title'>Kaldahl House</h1>
-          </header>
-          <nav>
-            <Link to='/occupants'>View Occupants</Link>
-          </nav>
-          <main>
-            <Route
-              path='/occupants'
-              component={Occupant}
-            />
-          </main>
-        </div>
+        <Switch>
+          <div className='App'>
+            <header className='App-header'>
+              <h1 className='App-title'>Kaldahl House</h1>
+              <nav>
+                <Link to='/occupants'>View Occupants</Link>
+              </nav>
+              <nav>
+                <Link to='/'>Home</Link>
+              </nav>
+            </header>
+            <main>
+              <Route
+                path='/occupants'
+                component={Occupant}
+              />
+              <form>
+                <input type='text' name='name' placeholder='name' />
+                <input type='text' name='age' placeholder='age' />
+                <input type='text' name='role' placeholder='role' />
+                <input type='submit' />
+              </form>
+            </main>
+          </div>
+        </Switch>
       </Router>
     )
   }
