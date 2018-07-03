@@ -1,21 +1,50 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Redirect,
+  Switch
+} from 'react-router-dom'
+import Occupant from '../Occupant/Occupant'
+import Profile from '../Profile/Profile'
+import './App.css'
 
 class App extends Component {
-  render() {
+  constructor () {
+    super()
+    this.state = {
+      name: null,
+      role: null,
+      age: null
+    }
+  }
+
+  createOccupant (nameValue, roleValue, ageValue) {
+    this.setState({
+      name: nameValue,
+      role: roleValue,
+      age: ageValue
+    })
+  }
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+      <div className='App'>
+        <header className='App-header'>
+          <h1 className='App-title'>Kaldahl House</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <nav>
+          <Link to='/occupants'>View Occupants</Link>
+        </nav>
+        <main>
+          <Route
+            path='occupants'
+            component={Occupant}
+          />
+        </main>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
